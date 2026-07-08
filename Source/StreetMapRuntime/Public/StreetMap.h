@@ -370,6 +370,24 @@ public:
 		return BoundsMax;
 	}
 
+	/** Average latitude/longitude of every node in the source .osm file - the origin that
+	    RoadPoints/BuildingPoints are projected relative to (see StreetMapFactory's
+	    ConvertLatLongToMetersRelative). Needed to align an externally-fetched height grid to
+	    the same local frame as this map's points. */
+	double GetOriginLatitude() const
+	{
+		return OriginLatitude;
+	}
+	double GetOriginLongitude() const
+	{
+		return OriginLongitude;
+	}
+
+#if WITH_EDITORONLY_DATA
+	/** Absolute path to the source .osm file this map was imported from, if known */
+	FString GetSourceFilePath() const;
+#endif	// WITH_EDITORONLY_DATA
+
 
 protected:
 	
@@ -392,6 +410,14 @@ protected:
 	/** 2D bounds (max) of this map's roads and buildings */
 	UPROPERTY( Category=StreetMap, VisibleAnywhere)
 	FVector2D BoundsMax;
+
+	/** Average latitude of every node in the source .osm file (see GetOriginLatitude) */
+	UPROPERTY( Category=StreetMap, VisibleAnywhere)
+	double OriginLatitude = 0.0;
+
+	/** Average longitude of every node in the source .osm file (see GetOriginLongitude) */
+	UPROPERTY( Category=StreetMap, VisibleAnywhere)
+	double OriginLongitude = 0.0;
 
 #if WITH_EDITORONLY_DATA
 	/** Importing data and options used for this mesh */

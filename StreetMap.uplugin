@@ -26,6 +26,19 @@
 			"Name" : "StreetMapImporting",
 			"Type" : "Editor",
 			"LoadingPhase" : "Default"
+		},
+
+		{
+			"Name" : "StreetMapZoneGraphBuilder",
+			"Type" : "Editor",
+			"LoadingPhase" : "Default"
 		}
-  ]
+  ],
+	"Plugins" :
+	[
+		{
+			"Name" : "ZoneGraph",
+			"Enabled" : true
+		}
+	]
 }

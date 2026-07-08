@@ -1,6 +1,13 @@
 #include "StreetMap.h"
 #include "EditorFramework/AssetImportData.h"
 
+#if WITH_EDITORONLY_DATA
+FString UStreetMap::GetSourceFilePath() const
+{
+	return AssetImportData ? AssetImportData->GetFirstFilename() : FString();
+}
+#endif	// WITH_EDITORONLY_DATA
+
 UStreetMap::UStreetMap()
 {
 #if WITH_EDITORONLY_DATA

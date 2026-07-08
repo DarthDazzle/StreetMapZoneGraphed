@@ -325,6 +325,9 @@ bool UStreetMapFactory::LoadFromOpenStreetMapXMLFile( UStreetMap* StreetMap, FSt
 	//        in integral grid cells with coordinates relative to their cell.  Of course, there will be many
 	//        other considerations for handling huge maps (loading, rendering, collision, etc.)
 
+	StreetMap->OriginLatitude = OSMFile.AverageLatitude;
+	StreetMap->OriginLongitude = OSMFile.AverageLongitude;
+
 	// Maps OSMWayInfos to the RoadIndex we created for that way
 	TMap< const FOSMFile::FOSMWayInfo*, int32 > OSMWayToRoadIndexMap;
 

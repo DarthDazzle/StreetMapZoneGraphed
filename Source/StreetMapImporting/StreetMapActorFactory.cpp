@@ -23,17 +23,6 @@ void UStreetMapActorFactory::PostSpawnActor(UObject* Asset, AActor* NewActor)
 	}
 }
 
-void UStreetMapActorFactory::PostCreateBlueprint(UObject* Asset, AActor* CDO)
-{
-	if (Asset != nullptr && CDO != nullptr)
-	{
-		UStreetMap* StreetMapAsset = CastChecked<UStreetMap>(Asset);
-		AStreetMapActor* StreetMapActor = CastChecked<AStreetMapActor>(CDO);
-		UStreetMapComponent* StreetMapComponent = StreetMapActor->GetStreetMapComponent();
-		StreetMapComponent->SetStreetMap(StreetMapAsset, true, false);
-	}
-}
-
 bool UStreetMapActorFactory::CanCreateActorFrom(const FAssetData& AssetData, FText& OutErrorMsg)
 {
 	return (AssetData.IsValid() && AssetData.GetClass()->IsChildOf(UStreetMap::StaticClass()));
